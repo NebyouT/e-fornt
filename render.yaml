@@ -1,9 +1,13 @@
 services:
-  - type: web
+  - type: static
     name: e-learning-client
-    env: static
-    buildCommand: npm install && npm run build
-    staticPublishPath: ./dist
+    buildCommand: npm ci && npm run build
+    publishPath: dist
     envVars:
       - key: VITE_API_URL
-        value: https://your-backend-url.onrender.com # You'll need to replace this with your actual backend URL
+        value: https://e-server-9hky.onrender.com # You'll need to replace this with your actual backend URL
+    headers:
+      - source: /*
+        headers:
+          - key: Cache-Control
+            value: public, max-age=0, must-revalidate
