@@ -1,8 +1,10 @@
 services:
   - type: static
     name: e-learning-client
+    branch: main
     buildCommand: npm ci && npm run build
-    publishPath: dist
+    staticPublishPath: ./dist
+    pullRequestPreviewsEnabled: true
     envVars:
       - key: VITE_API_URL
         value: https://e-server-9hky.onrender.com # You'll need to replace this with your actual backend URL
